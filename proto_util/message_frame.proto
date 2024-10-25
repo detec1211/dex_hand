@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+message Frame {
+    int32 frameLen=1;
+    repeated FrameMessage frameMessages = 2;
+}
+
+
+message FrameMessage {
+    int32 id = 1;
+    handData handMessage = 2;
+    deviceData deviceMessage = 3;
+}
+
+message handData {
+    float thumb_rotate = 3[default=0];
+    float thumb_split = 4[default=0];
+    float thumb_bend = 5[default=0];
+    float index_split = 6[default=0];
+    float index_bend = 7[default=0];
+    float middle_split = 8[default=0];
+    float middle_bend = 9[default=0];
+    float ring_split = 10[default=0];
+    float ring_bend = 11[default=0];
+    float pinky_split = 12[default=0];
+    float pinky_bend = 13[default=0];
+}
+
+
+message deviceData {
+    bool isRight = 2;
+    int32 batteryPercent = 3;
+}
+
+
+
+

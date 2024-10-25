@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+
+message CommandControl {
+    int32 id = 1;
+    repeated ImpedanceControl impedance_command = 2;
+    repeated RumbleControl rumble_command = 3;
+    repeated OtherControl other_messages = 4;
+}
+
+
+message RumbleControl {
+    RumbleControlData Thumb = 1;
+    RumbleControlData Index = 2;
+    RumbleControlData Middle = 3;
+    RumbleControlData Ring = 4;
+    RumbleControlData Pinky = 5;
+    repeated RumbleControlData UtilRumble = 6;
+    bool has_index = 7;
+}
+
+
+message RumbleControlData {
+    bool is_open = 1;
+    int32 repeated_times = 2;
+    float volume = 3;
+    int32 wavetype = 4;
+}
+
+
+message ImpedanceControl {
+    ImpedanceControlData Thumb = 1;
+    ImpedanceControlData Index = 2;
+    ImpedanceControlData Middle = 3;
+    ImpedanceControlData Ring = 4;
+    ImpedanceControlData Pinky = 5;
+    bool has_index = 6;
+}
+
+message ImpedanceControlData {
+    float Stiffness = 1;
+    float SetPoint = 2;
+}
+
+message OtherControl {
+    float control_type = 1;
+    float control_value = 2;
+}
